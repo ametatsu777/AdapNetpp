@@ -115,7 +115,7 @@ def test_func(config):
                   % (str(datetime.datetime.now()), str(os.getpid()), total_num)
                 print 'mIoU: ', compute_iou(output_matrix)
 
-                print('Sky:                         '),
+                print('Road Line:                   '),
                 print(  output_matrix[1, 0]/(np.sum(output_matrix[1,0:])+1e-10)*100  )
 
                 print('Building:                    '),
@@ -145,8 +145,8 @@ def test_func(config):
                 print('Pedestrians:                 '),
                 print(  output_matrix[10, 0]/(np.sum(output_matrix[10,0:])+1e-10)*100  )
                 
-                print('Rider/Bicycle/Motorcycle:    '),
-                print(  output_matrix[11, 0]/(np.sum(output_matrix[11,0:])+1e-10)*100  )
+                #print('Rider/Bicycle/Motorcycle:    '),
+                #print(  output_matrix[11, 0]/(np.sum(output_matrix[11,0:])+1e-10)*100  )
 
             step += 1
 
