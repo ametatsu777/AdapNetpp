@@ -34,7 +34,7 @@ sudo apt install nvidia-container-toolkit
 ```
 コンテナ作成・起動 
 ```
-docker run --gpus all -it -v ~/shared_dir/AdapNet++_3class:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
 root権限からUser権限にしたいのであれば
 一度起動したコンテナに再び入るとき  
@@ -128,4 +128,4 @@ tensorboard --logdir=[logsディレクトリ]
 prediction[gt == 0] = 0
 ```
 をコメントアウトしてください。
-# AdapNetpp
+
