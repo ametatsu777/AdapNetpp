@@ -38,7 +38,7 @@ docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-
 ```
 マウントしたファイルのowner問題解決(root→User)したいのであれば(こちらの方がおすすめ)  
 ```
-docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
 ※-uのオプションは一例　$idコマンドでuidとgidを調べてください。$(id -u $USER):$(id -g $USER)でも可。  
 
