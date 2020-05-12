@@ -24,36 +24,39 @@ rm -r -f .git
 .gitを消しているのは、初心者が誤ってgitbucketのソースコードを変更しないようにするためです。  
 
 2. dockerイメージの展開  
-```
-sudo docker load < ~/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar
-```
+	```
+	sudo docker load < ~/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar
+	```
 3. dockerコンテナの起動  
-nvidia-dockerをdockerで使えるようにする
-```
-sudo apt install nvidia-container-toolkit
-```  
-    コンテナ作成・起動  
-```
-docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
-```
-マウントしたファイルのowner問題解決(root→User)したいのであれば(こちらの方がおすすめ)  
-```
-docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
-```
-※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
+	nvidia-dockerをdockerで使えるようにする
+	```
+	sudo apt install nvidia-container-toolkit
+	```
+	コンテナ作成・起動  
+	```
+	docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+	```
+	マウントしたファイルのowner問題解決(root→User)したいのであれば(こちらの方がおすすめ)  
+	```
+	docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v 	/etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+	```
+	※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
 
 一度起動したコンテナに再び入るとき  
-```
-docker start [コンテナ名]
-docker attach [コンテナ名]
-```
+	```
+	docker start [コンテナ名]
+	docker attach [コンテナ名]
+	```
 ※コンテナ名は$docker ps -aで確認できる。  
 
 ## 使い方
 
 ### データセット整備
+1. rosbagから画像抽出
 
-1. リスト作成
+2. 画像を編集
+リサイズ(384×768)、ラベル画像を3チャンネル→1チャンネル
+3. リスト作成
 
 	```
 	[入力画像パス1] [ラベル画像パス1]
@@ -63,8 +66,8 @@ docker attach [コンテナ名]
 
 	```
 参考：dataset/make_dataset/list_maker.py  
-　　 (txtファイルを作れます。使い方はコード内に記述してあります。)
-2. tfrecord作成
+　　 (txtファイルを作れます。使い方はコード内に記述してあります。)  
+4. tfrecord作成
 ```
 python convert_to_tfrecords.py -f [リストファイル(.txt)パス] -r [tfrecordファイル(.records)パス]
 ```
