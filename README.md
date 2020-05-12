@@ -18,15 +18,14 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 dockerとやり取りするためshared_dir内にコードをダウンロードしてください。
 ```
 cd /home/shared_dir
-git clone http://data.tasakilab:8080/gitbucket/git/amemiya/AdapNet++_3class.git
-cd AdapNet++_3class
+git clone https://github.com/ametatsu777/AdapNetpp.git
 rm -r -f .git
 ```
 .gitを消しているのは、初心者が誤ってgitbucketのソースコードを変更しないようにするためです。  
 
 2. dockerイメージの展開  
 ```
-sudo docker load < /t_data/docker/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar
+sudo docker load < ~/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar
 ```
 3. dockerコンテナの起動  
 nvidia-dockerをdockerで使えるようにする
@@ -37,6 +36,7 @@ sudo apt install nvidia-container-toolkit
 ```
 docker run --gpus all -it -v ~/shared_dir/AdapNet++_3class:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
+root権限からUser権限にしたいのであれば
 一度起動したコンテナに再び入るとき  
 ```
 docker start [コンテナ名]
@@ -77,15 +77,10 @@ python train_tensorboard.py -c [configファイル]
 2. 評価  
 	12クラス
 	```
-	python evaluate_12label.py -c [configファイル] -d [保存場所]
+	python evaluate_12label.py -c [configファイル] -d [出力結果保存場所]
 	```
 	
-
-	3クラス
-	```
-	python evaluate_3label.py -c [configファイル] -o [出力画像保存場所] -p [確信度マップ保存場所]
-	```
-	※-o -pは保存したい場合のみ  
+	※-d -pは保存したい場合のみ  
 	
 ### TensorBoard
 ```
