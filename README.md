@@ -17,7 +17,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 1. コードのダウンロード  
 dockerとやり取りするためshared_dir内にコードをダウンロードしてください。
 ```
-cd /home/shared_dir
+cd $HOME/shared_dir
 git clone https://github.com/ametatsu777/AdapNetpp.git
 rm -r -f .git
 ```
