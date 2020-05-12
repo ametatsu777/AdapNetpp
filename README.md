@@ -81,7 +81,8 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 
 
 ### 学習
-1. configファイル編集
+1. configファイル編集(自粛期間中はここまでできれば十分です。お疲れ様です。)
+	※configファイル編集の仕方は下に記述してあります。
 2. 学習
 	```
 	python train_tensorboard.py -c [configファイル]
@@ -97,7 +98,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	
 	※-d -pは保存したい場合のみ  
 	
-### TensorBoard
+### TensorBoard(整備中)
 ```
 tensorboard --logdir=[logsディレクトリ]
 ```
