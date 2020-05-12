@@ -36,7 +36,10 @@ sudo apt install nvidia-container-toolkit
 ```
 docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
-root権限からUser権限にしたいのであれば
+マウントしたファイルのowner問題解決(root→User)したいのであれば(おすすめ)  
+```
+docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+```
 一度起動したコンテナに再び入るとき  
 ```
 docker start [コンテナ名]
