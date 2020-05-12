@@ -98,7 +98,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 2. 評価  
 	12クラス
 	```
-	python evaluate_12label.py -c [configファイル] -d [出力結果保存場所]
+	python evaluate_11label_carla.py -c [configファイル] -d [出力結果保存場所]
 	```
 	
 	※-d -pは保存したい場合のみ  
