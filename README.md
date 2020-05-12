@@ -31,8 +31,8 @@ sudo docker load < ~/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar
 nvidia-dockerをdockerで使えるようにする
 ```
 sudo apt install nvidia-container-toolkit
-```
-コンテナ作成・起動 
+```  
+    コンテナ作成・起動  
 ```
 docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
@@ -40,7 +40,7 @@ docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/root/shared_dir tensorflow-
 ```
 docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 ```
-※-uのオプションは一例　$idコマンドでuidとgidを調べてください。$(id -u $USER):$(id -g $USER)でも可。  
+※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
 
 一度起動したコンテナに再び入るとき  
 ```
