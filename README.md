@@ -1,4 +1,4 @@
-# AdapNet++_3class[編集中]
+# AdapNet++_勉強会
 
 
 ## 環境依存
@@ -6,11 +6,13 @@
 * tensorflow-gpu1.10.0
 * pyyaml
 
+
 ## 準備
-dockerを使用するのがオススメです。
+dockerを使用するのがオススメです。dockerのインストール方法は各自調べてください。
 ### dockerを使用する場合
 dockerがインストールされていることが前提です。  
-また、dockerが保存されている/t_dataはマウントし、ホームディレクトリ直下にshared_dirを作成しておいてください。  
+また、dockerイメージをダウンロードしてホームディレクトリ直下においてください。(OneDrive/ファイル/Meeting/2020/移動ロボット/雨宮/勉強会/tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2.tar)
+また、ホームディレクトリ直下にshared_dirを作成しておいてください。  
 	
 1. コードのダウンロード  
 dockerとやり取りするためshared_dir内にコードをダウンロードしてください。
