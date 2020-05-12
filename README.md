@@ -15,13 +15,13 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 また、ホームディレクトリ直下にshared_dirを作成しておいてください。  
 	
 1. コードのダウンロード  
-dockerとやり取りするためshared_dir内にコードをダウンロードしてください。
-```
-cd $HOME/shared_dir
-git clone https://github.com/ametatsu777/AdapNetpp.git
-rm -r -f .git
-```
-.gitを消しているのは、初心者が誤ってgitbucketのソースコードを変更しないようにするためです。  
+	dockerとやり取りするためshared_dir内にコードをダウンロードしてください。
+	```
+	cd $HOME/shared_dir
+	git clone https://github.com/ametatsu777/AdapNetpp.git
+	rm -r -f .git
+	```
+	.gitを消しているのは、初心者が誤ってgitbucketのソースコードを変更しないようにするためです。  
 
 2. dockerイメージの展開  
 	```
@@ -42,20 +42,20 @@ rm -r -f .git
 	```
 	※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
 
-一度起動したコンテナに再び入るとき  
+	一度起動したコンテナに再び入るとき  
 	```
 	docker start [コンテナ名]
 	docker attach [コンテナ名]
 	```
-※コンテナ名は$docker ps -aで確認できる。  
+	※コンテナ名は$docker ps -aで確認できる。  
 
 ## 使い方
 
 ### データセット整備
-1. rosbagから画像抽出
+1. rosbagから画像抽出  
 
-2. 画像を編集
-リサイズ(384×768)、ラベル画像を3チャンネル→1チャンネル
+2. 画像を編集  
+	リサイズ(384×768)、ラベル画像を3チャンネル→1チャンネル
 3. リスト作成
 
 	```
@@ -65,20 +65,20 @@ rm -r -f .git
 	...
 
 	```
-参考：dataset/make_dataset/list_maker.py  
-　　 (txtファイルを作れます。使い方はコード内に記述してあります。)  
+	参考：dataset/make_dataset/list_maker.py  
+	   (txtファイルを作れます。使い方はコード内に記述してあります。)  
 4. tfrecord作成
-```
-python convert_to_tfrecords.py -f [リストファイル(.txt)パス] -r [tfrecordファイル(.records)パス]
-```
+	```
+	python convert_to_tfrecords.py -f [リストファイル(.txt)パス] -r [tfrecordファイル(.records)パス]
+	```
 
 
 ### 学習
 1. configファイル編集
 2. 学習
-```
-python train_tensorboard.py -c [configファイル]
-```
+	```
+	python train_tensorboard.py -c [configファイル]
+	```
 
 ### 評価
 1. configファイル編集
