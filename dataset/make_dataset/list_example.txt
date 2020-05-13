@@ -1,0 +1,4 @@
+../data/rgb_img/rgb_frame0000.png ../data/label_img/label_frame0000.png
+../data/rgb_img/rgb_frame0001.png ../data/label_img/label_frame0001.png
+../data/rgb_img/rgb_frame0002.png ../data/label_img/label_frame0002.png
+↑こんな感じです。tfrecordをつくるための参照するパスなので、どこから見たパスなのか注意してください。
