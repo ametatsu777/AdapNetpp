@@ -9,9 +9,9 @@ def main():
 	##how_to use##
 	# $python list_maker.py -hでオプション確認
 	# -i 入力となる画像が入っているディレクトリ　-l　正解ラベル画像が入っているディレクトリ　-o txtファイル保存場所
-	# 例：$python list_maker.py -i /rgb_image/ -l /label_image/ -o ../../list_train.txt
+	# つまり -i リサイズ後のRGB画像の保存場所 -l リサイズ・変換後のラベル画像の保存場所 -o txtファイル保存場所
+	# 例：$python list_maker.py -i ./rgb_image/ -l ./label_image/ -o ./list_train.txt
 
-	# $python list_maker.py <RGBimages path> <label images path> <to write path(.txt)>
 	
 	txtfiles_depth = []
 	txtfiles_label = []
