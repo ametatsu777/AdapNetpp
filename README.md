@@ -55,13 +55,12 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 1の作業はdockerの外でやってください。2,3についてはdockerの中と外どちらでやってもらっても問題ないです。dockerの外でやる場合、足りないpythonモジュールは各自インストールしてください。4の作業はdocker内でやってください。  
 1. rosbagから画像抽出  
 	OneDrive/ファイル/Meeting/2020/移動ロボット/雨宮/勉強会/rosbag_to_imagesをダウンロードしてcatkin_ws/src下においてください。  
-	launchファイルの`/home/amemiya/carla_test.bag`はcarlaのrosbagファイルのパスに変更し、`/home/amemiya/test/i/frame%04d.png`,`/home/amemiya/test/l/frame%04d.png`はそれぞれRGB画像,ラベル画像を保存したい場所に変更してください。
+	src/rosbag_to_images_carla.cppの26行目の`/home/amemiya/save/i/`はRGB画像を保存したい場所に、37行目の`/home/amemiya/save/l/`はラベル画像を保存したい場所に変更してください。(雑ですいません)  
 	```
 	cd $HOME/catkin_ws/
 	catkin_make
-	roslaunch rosbag_to_images rosbag_to_images.launch
+	roslaunch rosbag_to_images rosbag_to_images_sy.launch
 	```
-	※melodicにて動作確認済(2020/05/12)
 	
 2. 画像を編集  
 	リサイズ(384×768)、ラベル画像を3チャンネル→1チャンネル
