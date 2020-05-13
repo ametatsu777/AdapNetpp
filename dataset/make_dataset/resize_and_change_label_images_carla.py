@@ -6,8 +6,6 @@ import argparse
 import numpy as np
 import os
 
-h = 375
-w = 1275
 
 HEIGHT = 384
 WIDTH = 768
@@ -16,6 +14,7 @@ WIDTH = 768
 def change_label(src):
 
     # 出力画像用の配列生成（要素は全て空）
+    h, w = src.shape[:2]
     dst = np.empty((h,w))
     dst_color = np.empty((h,w,3))
     i=0
