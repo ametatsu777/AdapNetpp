@@ -38,9 +38,10 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	```
 	マウントしたファイルのowner問題解決(root→User)したいのであれば(こちらの方がおすすめ)  
 	```
-	docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v 	/etc/passwd:/etc/passwd:ro -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+	docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v 	/etc/passwd:/etc/passwd:ro -p 6006:6006 -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 	```
 	※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
+	※-pオプションはtensorborad用のポート設定
 
 	一度起動したコンテナに再び入るとき  
 	```
@@ -104,8 +105,11 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	※-d -pは保存したい場合のみ  
 	
 ### TensorBoard(整備中)
+別ターミナルで
 ```
-tensorboard --logdir=[logsディレクトリ]
+docker exec -it [コンテナ名] /bin/bash
+cd /home/shared_dir/
+tensorboard --port 6006 --logdir=./logs/ --host=0.0.0.0
 ```
 ※logs内のファイルは複数あるとダメです。
 
