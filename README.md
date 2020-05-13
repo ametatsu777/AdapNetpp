@@ -98,7 +98,6 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 ### 評価
 1. configファイル編集
 2. 評価  
-	12クラス
 	```
 	python evaluate_11label_carla.py -c [configファイル] -d [出力結果保存場所]
 	```
