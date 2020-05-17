@@ -65,13 +65,14 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	```
 	※rosbag保存の際の必須topic名  
 	  /carla/ego_vehicle/camera/rgb/front/image_colorと/carla/ego_vehicle/camera/semantic_segmentation/semantic_segmentation/image_segmentation  
-
+	保存先ディレクトリはあらかじめ作っておいてください。
 	
 2. 画像を編集  
 	リサイズ(384×768)、ラベル画像を3チャンネル→1チャンネル
 	```
 	python resize_and_change_label_images.py -i [rosbagから取得したRGB画像のディレクトリ] -j [rosbagから取得したラベル画像のディレクトリ] -o [リサイズ後のRGB画像の保存場所] -p [リサイズ・変換後のラベル画像の保存場所] -q [リサイズ・変換後のカラーラベル画像の保存場所]
 	```
+	※保存先ディレクトリはあらかじめ作っておいてください。
 3. リスト作成
 
 	```
@@ -106,16 +107,16 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	python evaluate_11label_carla.py -c [configファイル] -d [出力結果保存場所]
 	```
 	
-	※-d -pは保存したい場合のみ  
+	※-dは保存したい場合のみ  保存先ディレクトリはあらかじめ作っておいてください。
 	
-### TensorBoard(整備中)
+### TensorBoard
 別ターミナルで
 ```
 docker exec -it [コンテナ名] /bin/bash
 cd /home/shared_dir/
 tensorboard --port 6006 --logdir=./logs/ --host=0.0.0.0
 ```
-※logs内のファイルは複数あるとダメです。
+※logs内のファイルは複数あるとダメです。見たいものだけを残してください。
 
 ### configファイル編集方法
 #### 学習パラメータ
@@ -124,7 +125,7 @@ tensorboard --port 6006 --logdir=./logs/ --host=0.0.0.0
     model: name of the model
     num_classes: number of classes (including void, label id:0)
     intialize:  path to pre-trained model('init_checkpoint/AdapNet_pp_init.ckpt')
-    checkpoint: path to save model
+    checkpoint: path to save model(保存場所はあらかじめ作っておいてください)
     train_data: path to dataset .tfrecords
     batch_size: training batch size
     skip_step: how many steps to print loss 
