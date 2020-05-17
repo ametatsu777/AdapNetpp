@@ -64,8 +64,8 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	roslaunch rosbag_to_images rosbag_to_images_sy.launch
 	```
 	※rosbag保存の際の必須topic名  
-	  /carla/ego_vehicle/camera/rgb/front/image_colorと/carla/ego_vehicle/camera/semantic_segmentation/segmentation/image_segmentation
-	or /carla/ego_vehicle/camera/semantic_segmentation/segmentation/image_segmentation  
+	  /carla/ego_vehicle/camera/rgb/front/image_colorと/carla/ego_vehicle/camera/semantic_segmentation/segmentation/image_segmentation  
+	or  /carla/ego_vehicle/camera/semantic_segmentation/semantic_segmentation/image_segmentation  
 	保存先ディレクトリはあらかじめ作っておいてください。
 	
 2. 画像を編集  
