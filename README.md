@@ -56,7 +56,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 1の作業はdockerの外でやってください。2,3についてはdockerの中と外どちらでやってもらっても問題ないです。dockerの外でやる場合、足りないpythonモジュールは各自インストールしてください。4の作業はdocker内でやってください。  
 1. rosbagから画像抽出  
 	OneDrive/ファイル/Meeting/2020/移動ロボット/雨宮/勉強会/rosbag_to_imagesをダウンロードしてcatkin_ws/src下においてください。  
-	src/rosbag_to_images_carla.cppの26行目の`/home/amemiya/save/i/`はRGB画像を保存したい場所に、37行目の`/home/amemiya/save/l/`はラベル画像を保存したい場所に変更してください。  
+	src/rosbag_to_images_carla.cppの26行目の`/home/amemiya/save/i/`はRGB画像を保存したい場所に、37行目の`/home/amemiya/save/l/`はラベル画像を保存したい場所に変更してください。51,52行目のtopic名はrosbagのtopicと合わせてください。
 	また、rosbag_to_images_sy.launchの`/home/amemiya/carla_test1.bag`部分は自分が保存したrosbagのパスにしてください。(雑ですいません)  
 	```
 	cd $HOME/catkin_ws/
@@ -64,7 +64,8 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	roslaunch rosbag_to_images rosbag_to_images_sy.launch
 	```
 	※rosbag保存の際の必須topic名  
-	  /carla/ego_vehicle/camera/rgb/front/image_colorと/carla/ego_vehicle/camera/semantic_segmentation/semantic_segmentation/image_segmentation  
+	  /carla/ego_vehicle/camera/rgb/front/image_colorと/carla/ego_vehicle/camera/semantic_segmentation/segmentation/image_segmentation
+	or /carla/ego_vehicle/camera/semantic_segmentation/segmentation/image_segmentation  
 	保存先ディレクトリはあらかじめ作っておいてください。
 	
 2. 画像を編集  
