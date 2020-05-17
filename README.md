@@ -158,4 +158,6 @@ tensorboard --port 6006 --logdir=./logs/ --host=0.0.0.0
 prediction[gt == 0] = 0
 ```
 をコメントアウトしてください。
-
+  
+  
+2020/05/17:carla勉強会(最新バージョン)のデータを使用して動作確認完了
