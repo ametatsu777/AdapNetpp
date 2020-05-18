@@ -85,6 +85,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	```
 	参考：dataset/make_dataset/list_maker.py  
 	   (txtファイルを作れます。使い方はコード内に記述してあります。)  
+	※ラベル画像は1チャンネルの方です。
 4. tfrecord作成
 	```
 	python convert_to_tfrecords.py -f [リストファイル(.txt)パス] -r [tfrecordファイル(.records)パス]
