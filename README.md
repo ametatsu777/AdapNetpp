@@ -38,7 +38,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 	```
 	マウントしたファイルのowner問題解決(root→User)したいのであれば(こちらの方がおすすめ)  
 	```
-	sudo docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v 	/etc/passwd:/etc/passwd:ro -p 6006:6006 -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
+	sudo docker run --gpus all -it -v ~/shared_dir/AdapNetpp:/home/shared_dir -v /etc/group:/etc/group:ro -v  /etc/passwd:/etc/passwd:ro -p 6006:6006 -u 1000:1000 tensorflow-tensorflow__1.10.0-gpu-py2-pythontk-yaml-cv2
 	```
 	※-uのオプションは一例　`$id`コマンドでuidとgidを調べてください。`$(id -u $USER):$(id -g $USER)`でも可。  
 	※-pオプションはtensorborad表示のためのポート設定
