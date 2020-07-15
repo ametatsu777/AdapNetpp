@@ -107,7 +107,7 @@ dockerイメージをダウンロードしてホームディレクトリ直下�
 1. configファイル編集
 2. 評価  
 	```
-	python evaluate_11label_carla.py -c [configファイル] -d [出力結果保存場所]
+	python evaluate_11label_carla.py -c [configファイル] -d [出力結果保存場所] -p [確信度マップ保存場所]
 	```
 	
 	※-dは保存したい場合のみ  保存先ディレクトリはあらかじめ作っておいてください。

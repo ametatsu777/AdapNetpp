@@ -30,6 +30,8 @@ from PIL import Image
 PARSER = argparse.ArgumentParser()
 PARSER.add_argument('-c', '--config', default='config/cityscapes_test.config')
 PARSER.add_argument('-d', '--save_directory', default='None', help='seve_directory')
+PARSER.add_argument('-p', '--save_directory_pro', default='None', help='seve_probabilities_directory')
+
 args = PARSER.parse_args()
 
 def test_func(config):
@@ -66,6 +68,15 @@ def test_func(config):
             img, label = sess.run([data_list[0], data_list[1]])
             feed_dict = {images_pl : img}
             probabilities = sess.run([model.softmax], feed_dict=feed_dict)
+            #####確信度マップ#####
+            probabilities_rsh = probabilities[0].reshape([config['height'], config['width'], 11])
+            # 次元数が一つ多いのでprobabilities[0]　
+            probabilities_max = np.amax(probabilities_rsh, axis=2)
+            probabilities_max3 = np.stack([probabilities_max,probabilities_max,probabilities_max], -1)
+            
+            # 確信度が高いクラスの値を白黒で表示　黒が低い
+            probabilities_vis2 = (probabilities_max * 255).astype(np.uint8)
+            
             prediction = np.argmax(probabilities[0], 3)
             gt = np.argmax(label, 3)
 
@@ -104,6 +115,13 @@ def test_func(config):
                 print(args.save_directory)
                 print("\n")
                 cv2.imwrite(args.save_directory + str(i) +'.png',segmented_image1)
+            
+            if args.save_directory_pro != 'None':
+                print("save_place_pro:"),
+                print(args.save_directory_pro)
+                print("\n")
+                cv2.imwrite(args.save_directory_pro + str(i) +'.png',probabilities_vis2)
+
             i = i + 1
             
             
